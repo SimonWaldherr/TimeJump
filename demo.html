@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TimeJump Demo</title>	
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
+  <script src="http://cdn.simon.waldherr.eu/projects/LoremSonitus/fsk.js"></script>
+</head>
+<body>
+
+<h1>TimeJump Demo</h1>
+
+<p>Audio player</p>
+
+<h2>FSK WAV</h2>
+<audio id="testplayer" controls="controls"><source id="fsk" src="" type="audio/wav" /></audio>	<br/>
+<a href="#t=13">13s</a> 
+<a href="#t=23">23s</a> 
+<a href="#t=33">33s</a> 
+<a href="#t=43">43s</a> 
+<a href="#t=53">53s</a> 
+<script>
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+
+    var chars = ['a', 'b', 'c', 'd', 'e', 'v', 'w', 'x', 'y', 'z'];
+    var random = '0';
+    var randomint = '0';
+    for(var i = 0; i < 289; i++) {
+      randomint = getRandomInt(0, 9);
+      for(var j = 0; j < 23; j++) {
+        random += chars[randomint];
+      }
+    }
+
+    var SoundGenInput = document.getElementById('testplayer').innerHTML+random;
+    document.getElementById('fsk').src = FSKencode(SoundGenInput);
+    document.querySelector('audio, video').volume=.2;
+  </script>
+
+<script src="./timeJump.js"></script>
+</body>
+</html>
